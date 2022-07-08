@@ -38,14 +38,14 @@ if __name__ == "__main__":
     #sys.argv[3]  ## BigIP admin's password
     # getListPoolMembers(sys.argv[1] ,sys.argv[2] ,sys.argv[3] )
     devices=[        {
-            "mgmt_ip": "172.16.45.20",
+            "mgmt_ip": "",
             "user": "admin",
-            "password": 'Idri$$2020'
+            "password": ''
           },
            {
-            "mgmt_ip": "172.16.45.21",
+            "mgmt_ip": "",
             "user": "admin",
-            "password": 'Idri$$2020'
+            "password": ''
           }
            
     ]
