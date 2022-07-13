@@ -1,0 +1,38 @@
+#! /usr/bin/env python
+import os
+import json
+import ipaddress as ip
+
+def getselectedPoolmember(network):
+    count=0
+    files = os.listdir("output_data/")
+    select_device={}
+    for f in files:
+        select_IP={}
+        pools= json.load(open (f))
+        for pool_name in pools:
+            print (pools[pool_name]["membre_ip"])
+            if ip.ip_address(pools[pool_name]["membre_ip"]) in ip.ip_network(network):
+                print (pool_name)
+                select_IP["selected_pool"]= pools[pool_name]["membre_ip"]
+                select_IP["selected_ip"]= pools[pool_name]["membre_ip"]
+
+        select_device[f]= select_IP
+    
+                
+    if select_device:
+        print (select_device)
+        file_name= "output_selected_data/" + network.replace("/","_") +".json"
+        with open (file_name, 'w+') as pool_file:
+            json.dump(select_device, pool_file, indent=4)
+        pool_file.close()
+        print (" the file {0} is generated successfly  ".format(file_name))
+
+
+
+if __name__ == "__main__":
+    # args
+    getselectedPoolmember("172.0.0.0/16")
+    getselectedPoolmember("192.0.1.0/24")
+
+
