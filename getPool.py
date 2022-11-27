@@ -11,10 +11,10 @@ def getListPoolMembers (bigip_ip,bigip_admin, bigip_password):
     # Get a list of all pools on the BigIP and print their names and their
     # members' names
     pools = mgmt.tm.ltm.pools.get_collection()
-
+    ### add comment
     pool_dic={}
     for pool in pools:
-        #print (pool.name)
+        print (pool.name)
         pool_dic[pool.name]= [member.name for member in pool.members_s.get_collection()]
         
         #for member in pool.members_s.get_collection():
